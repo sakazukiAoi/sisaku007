@@ -4,7 +4,17 @@
   <head>
 	<title>HOW DO YOU KNOW </title>
     <link rel="icon" href="favicon.ico">
-  </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3秒後に表示されるボタン</title>
+    <style>
+        #delayedButton {
+            display: none; /* 初めは非表示 */
+        }
+    </style>
+</head>
+<body>
+
   <body>
 <!-- SRC　画像の名前　ALT　変更 -->
  <p class="resizeimage">
@@ -14,4 +24,19 @@
 	.resizeimage img { width: 100%; }
 	</style>
   </body>
+	
+    <button id="delayedButton">クリックしてください</button>
+
+    <script>
+        // 3秒後にボタンを表示する
+        setTimeout(function() {
+            document.getElementById('delayedButton').style.display = 'block';
+        }, 3000);
+    </script>
+
+</body>
 </html>
+
+
+
+
