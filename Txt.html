@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページ内の文字数制限表示</title>
+    <style>
+        #content {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+        }
+        .button-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content"></div>
+    <div class="button-container">
+        <button onclick="previousPage()">前へ</button>
+        <button onclick="nextPage()">次へ</button>
+    </div>
+
+    <script>
+        const text = "これは非常に長いテキストで、1ページに収まらない場合に、次のページに分割して表示させるためのサンプルテキストです。このテキストがどれだけ長いかに応じてページを切り替えるボタンで進めます。";
+        const charsPerPage = 50; // 1ページあたりの文字数
+        let currentPage = 0;
+
+        // テキストをページごとに分割
+        const pages = [];
+        for (let i = 0; i < text.length; i += charsPerPage) {
+            pages.push(text.slice(i, i + charsPerPage));
+        }
+
+        // ページを表示
+        function displayPage(page) {
+            document.getElementById("content").textContent = pages[page];
+        }
+
+        // 「次へ」ボタン
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                displayPage(currentPage);
+            }
+        }
+
+        // 「前へ」ボタン
+        function previousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                displayPage(currentPage);
+            }
+        }
+
+        // 初期ページの表示
+        displayPage(currentPage);
+    </script>
+
+</body>
+</html>
