@@ -1,41 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3秒後に表示されるボタン</title>
+    <title>画像の上にボタンを表示</title>
     <style>
-	 body {
-      background-color: #000; /* 黒色 */
-	 }
-        #delayedButton {
-	    display:none;
+        /* 親のdivを相対配置に */
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ボタンを絶対配置で中央に */
+        .overlay-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-	}
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
-     <p class="resizeimage">
- 	<img src="B.gif" alt="ART">
- </p>
-	<style>
-	.resizeimage img {
-	width: 100%; 
-	position: relative;
-        display: inline-block;		
-        }
-	</style>
-  </body>
 <body>
-　　　<button id="delayedButton" onclick="location.href='Txt.html'>次へ</button>
 
-    <script>
-        // 3秒後にボタンを表示する
-        setTimeout(function() {
-            document.getElementById('delayedButton').style.display = 'block';
-        }, 3000);
-    </script>
-	   </body>
+    <div class="image-container">
+        <img src="B.gif" alt="画像" width=100%  style="width:100%;">
+<input type="button" class="overlay-button" onclick="location.href='Txt.html'" value="次へ">
+    </div>
+
+</body>
 </html>
