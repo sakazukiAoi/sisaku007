@@ -35,7 +35,7 @@
         // 外部ファイルからテキストを読み込む関数
         async function loadText() {
             try {
-                const response = await fetch('text.txt'); // 外部テキストファイルのパス
+                const response = await fetch('story.txt'); // 外部テキストファイルのパス
                 const text = await response.text();
 
                 // テキストをページごとに分割
