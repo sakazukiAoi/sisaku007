@@ -13,79 +13,6 @@
             overflow: hidden;
         }
         .button-container {
-            margin-top: 20px;
-            text-align: 100%;
-            position: absolute;
-            left: 40%;
-            transform: translate(-50%, -50%);
-
-        }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="content"></div>
-    <div class="button-container">
-        <button onclick="previousPage()">前へ</button>
-        <button onclick="nextPage()">次へ</button>
-    </div>
-
-
-    <script>
-        const charsPerPage = 108; // 1ページあたりの文字数
-        let currentPage = 0;
-        let pages = [];
-
-        // 外部ファイルからテキストを読み込む関数
-        async function loadText() {
-            try {
-                const response = await fetch('story.txt'); // 外部テキストファイルのパス
-                const text = await response.text();
-
-                // テキストをページごとに分割
-                for (let i = 0; i < text.length; i += charsPerPage) {
-                    pages.push(text.slice(i, i + charsPerPage));
-                }
-
-                // 最初のページを表示
-                displayPage(currentPage);
-            } catch (error) {
-                document.getElementById("content").textContent = "テキストの読み込みに失敗しました。";
-            }
-        }
-
-        // ページを表示する関数
-        function displayPage(page) {
-            document.getElementById("content").textContent = pages[page];
-        }
-
-        // 「次へ」ボタン
-        function nextPage() {
-            if (currentPage < pages.length - 1) {
-                currentPage++;
-                displayPage(currentPage);
-            }
-        }
-
-        // 「前へ」ボタン
-        function previousPage() {
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>外部テキストのページ内表示</title>
-    <style>
-        #content {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 300px;
-            height: 150px;
-            overflow: hidden;
-        }
-        .button-container {
             margin-top: 10px;
             text-align: center;
         }
@@ -117,7 +44,7 @@
         // 外部ファイルからテキストを読み込む関数
         async function loadText() {
             try {
-                const response = await fetch('text.txt'); // 外部テキストファイルのパス
+                const response = await fetch('story.txt'); // 外部テキストファイルのパス
                 const text = await response.text();
 
                 // テキストをページごとに分割
