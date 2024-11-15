@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脳</title>
+    <style>
+        #content {
+            align-items:center;
+            margin-right: auto;
+            margin-left: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+        }
+        .button-container {
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+        .link-button {
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="content">読み込み中...</div>
+    <div class="button-container">
+        <button onclick="previousPage()">前へ</button>
+        <button id="nextButton" onclick="nextPage()">次へ</button>
+    </div>
+
+
+    <script>
+        const charsPerPage = 120; // 1ページあたりの文字数
+        let currentPage = 0;
+        let pages = [];
+
+        // 外部ファイルからテキストを読み込む関数
+        async function loadText() {
+            try {
+                const response = await fetch('story.txt'); // 外部テキストファイルのパス
+                const text = await response.text();
+
+                // テキストをページごとに分割
+                for (let i = 0; i < text.length; i += charsPerPage) {
+                    pages.push(text.slice(i, i + charsPerPage));
+                }
+
+                // 最初のページを表示
+                displayPage(currentPage);
+            } catch (error) {
+                document.getElementById("content").textContent = "テキストの読み込みに失敗しました。";
+            }
+        }
+
+        // ページを表示する関数
+        function displayPage(page) {
+            document.getElementById("content").textContent = pages[page];
+
+            // 最後のページなら「次へ」ボタンをリンクに変更
+            const nextButton = document.getElementById("nextButton");
+            if (currentPage === pages.length - 1) {
+                nextButton.outerHTML = `<a href="list.html" class="link-button">次のページへ</a>`;
+            } else {
+                // 最後のページでない場合、通常のボタンに戻す
+                nextButton.outerHTML = `<button id="nextButton" onclick="nextPage()">次へ</button>`;
+            }
+        }
+
+        // 「次へ」ボタン
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                displayPage(currentPage);
+            }
+        }
+
+        // 「前へ」ボタン
+        function previousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                displayPage(currentPage);
+            }
+        }
+
+        // ページ読み込み時にテキストを読み込む
+        loadText();
+    </script>
+
+</body>
+</html>
+
+
+

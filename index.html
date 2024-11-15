@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記憶</title>
+    <style>
+        /* 親のdivを相対配置に */
+        .image-container {
+            position: relative;
+            display: inline-block;
+	    width:100%;
+	　　center: 100%;
+        }
+
+        /* ボタンを絶対配置で中央に */
+        .overlay-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+	    border-bottom: 5px solid #000000;
+        }
+	.overlay-button:active {
+	    transition: 0.15s;
+	    border-bottom: 0px solid #000000;
+}
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+<!--        <video src="9.mp4" alt="記憶" width=100%> -->
+	<source src="9.mp4" type="video/mp4" />
+<input type="button" class="overlay-button" onclick="location.href='Txt.html'" value="次へ">
+    </div>
+<video controls>
+	<source src="9.mp4" type="video/mp4" autoplay onplay="handleFirstPlay(event)"/>
+</video>
+
+</body>
+</html>

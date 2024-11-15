@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私を構成するもの</title>
+</head>
+<body>
+    <h1>私を構成するもの</h1>
+    <p>布団</p>
+    <p>飲み物</p>
+    <p>椅子</p>
+    <p>紙</p>
+    <p>スマホ</p>
+    <p>絵画</p>
+    <p>わたし</p>
+    <p>制服</p>
+    <p>絵具</p>
+    <p>クレヨン</p>
+    <p>ギター</p>  
+    <p>スタンプシール</p>
+    <p>猫のぬいぐるみ</p>
+    <p>イラスト集</p>
+    <p>ピアニカ</p>
+    <p>Bluetoothイヤホン</p>
+    <p>モニター</p>
+    <p>リュックサック</p>
+    <p>折鶴</p>
+    <p>マウス</p>
+    <p>スピーカー</p>
+    <p>PSP</p>
+    <p>洋服</p>
+    <p>マグカップ</p>
+    <p>ペンギンのぬいぐるみ</p>
+    <p>化粧水</p>
+    <p>ジャム瓶</p>
+    <p>3DSLL</p>
+    <p>WiiU</p>
+    <p>ドライヤー</p>
+    <p>CD</p>
+    <p>キーボード</p>
+    <p>カッター</p>
+    <p>弁当箱</p>
+    <p>リボン</p>
+    <p>パレット</p>
+    <p>教科書</p>
+    <p>ゴミ箱</p>
+    <p>筆箱</p>
+    <p>音楽プレイヤー</p>
+    <p>ボールペン(赤)</p>
+    <p>マーカー(水色)</p>
+    <p>蛙のぬいぐるみ</p>
+    <p>ゴミ袋</p>
+    <p>猫</p>
+    <p>ともだち</p>
+  
+
+    <script>
+        // 関数でチェックボックスを<p>に追加する
+        function addCheckboxToParagraphs() {
+            document.querySelectorAll('p').forEach(paragraph => {
+                // すでにチェックボックスがある場合はスキップ
+                if (!paragraph.querySelector('input[type="checkbox"]')) {
+                    const label = document.createElement('label');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    label.appendChild(checkbox);
+                    label.append(paragraph.textContent);
+                    paragraph.textContent = '';  // <p>のテキストをクリア
+                    paragraph.appendChild(label);  // チェックボックスとテキストを<p>に追加
+                }
+            });
+        }
+
+        // 初回実行
+        addCheckboxToParagraphs();
+
+        // 新しい<p>要素が追加されたときに監視して実行する
+        const observer = new MutationObserver(addCheckboxToParagraphs);
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+</body>
+</html>
